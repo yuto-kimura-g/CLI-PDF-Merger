@@ -5,8 +5,8 @@ import PyPDF2
 
 def Merge(args) -> None:
     print(f"\n> merge {args.input_dir_path}/*.pdf to {args.output_file_path}")
-    merger = PyPDF2.PdfFileMerger()
-    for input_file_name in glob(f"{args.input_dir_path}/**/*.pdf", recursive=True):
+    merger = PyPDF2.PdfMerger()
+    for input_file_name in sorted(glob(f"{args.input_dir_path}/**/*.pdf", recursive=True)):
         input_file_name = str(input_file_name).replace("\\", "/").replace("//", "/")
         merger.append(input_file_name)
     output_file_name = str(args.output_file_path).replace("\\", "/").replace("//", "/")
